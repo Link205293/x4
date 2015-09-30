@@ -1,0 +1,210 @@
+//Lets make the background change
+//Garrett Stoddard Sept 30
+
+//Globals
+
+int r, g, b; //Color values for the background
+//Height and width
+int H = 500;
+int W = 600;
+
+/*
+Float buttonNX is the x coordinate of the center of the rectangle
+Float buttonNY is the y coordinate of the center of the rectangle
+Float buttonNq is the width of the rectangle
+Float buttonNp is the height of the rectangle
+Where N = the number of the rectangle
+*/
+float button1X = W/4, button1Y = H/4, button1q = 50, button1p = 20;
+float button2X = W/2, button2Y = H/4, button2q = 50, button2p = 20;
+float button3X = 3*W/4, button3Y = H/4, button3q = 50, button3p = 20;
+float button4X = W/2, button4Y = H/2, button4q = 50, button4p = 20;
+
+// Setup routine
+//Deciding the size of the screen, and other
+void setup()
+{
+  size(W,H);
+  reset();
+  
+  
+}
+void reset() 
+{
+  r = 255;
+  g = 255;
+  b = 255;
+}
+
+//Making the screen change color
+void draw()
+{
+  //Button to change red
+  screenColor();
+  drawButton(button1X, button1Y, button1q, button1p, 255, 0, 0 );
+  //Button to change green
+  drawButton(button2X, button2Y, button2q,button2p, 0, 255, 0 );
+  //Button to change blue
+  drawButton(button3X, button3Y, button3q, button3p, 0, 0, 255 );
+  //Button to randomize color
+  drawButton(button4X, button4Y, button4q, button4p, 0, 0, 0 );
+  
+  text( "x1: "+ xx1, 10,10 );
+  text( "y1: "+ yy1, 10,20 );
+  text( xx2, 10,30 );
+  text( yy2, 10,40 );
+  text( ww, 10,50 );
+  text( hh, 10,60 );
+}
+
+//Method to make a button to press.
+/*
+float x is the x coordinate of the center of the rectangle
+float y is the y coordinate of the center of the rectangle
+float q is the width of the rectangle
+float p is the height of the rectangle
+float rr is the red value of the rectangle
+float rg is the green value of the rectange
+float rb is the blue value of the rectangle
+*/
+void drawButton(float x, float y, float q, float p, float rr, float rg, float rb)
+{
+  // color of the rectangle
+  fill(rr, rg, rb);
+  //Changes the mode of the rectangle to the center
+  rectMode(CENTER);
+  rect(x,y,q,p);
+}
+
+void screenColor()
+{
+  background(r,g,b);
+}
+
+//Handlers Key click and mouse click
+void keyPressed()
+{
+  
+}
+
+void mousePressed()
+{
+  //Hitting the red button
+  if( hit( mouseX, mouseY,  button1X, button1Y, button1q, button1p) )
+  {
+    b = b - 20;
+      if( b < 0)
+      {
+        b = 255;
+      }
+      
+    g = g - 20;
+      if( g < 0)
+      {
+        g = 255;
+      }
+  }
+  //Hitting the green button
+  else if ( hit( mouseX, mouseY,  button2X, button2Y, button2q, button2p) == true)
+   {
+     background(0);
+      b = b - 20;
+      if( b < 0)
+      {
+        b = 255;
+      }
+      
+    r = r - 20;
+      if( r < 0)
+      {
+        r = 255;
+      }
+   }
+   //Hitting the blue button
+  else if ( hit( mouseX, mouseY,  button3X, button3Y, button3q, button3p) == true)
+   {
+    g = g - 20;
+      if( g < 0)
+      {
+        g = 255;
+      }
+      
+    r = r - 20;
+      if( r < 0)
+      {
+        r = 255;
+      }
+   }
+   //Hitting the black button
+  /*else if ( hit( mouseX, mouseY,  button4X, button4Y, button4q, button4p) == true)
+   {
+     r = int( random(255) );
+     g = random(255);
+     b = random(255);
+   }
+   */
+   else
+   //??  reset();
+   ;
+   
+}
+
+
+float xx1, yy1, xx2, yy2, ww, hh;
+
+
+// Other methods
+/** whatever
+  *  blah blah
+  * @param  x1 is the x coord of one object
+  * @param  y1 is the y coord of the same object
+x2 is the x coord of the second object
+y2 is the y coord of the second object
+w is the width "hitbox" for the two items
+h is the height "hitbox" for the two items
+*/
+boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {
+  boolean result;
+
+  xx1=  x1;
+  yy1=y1;
+  xx2=x2;
+  yy2=y2;
+  ww=w;
+  hh=h;
+
+
+  // +++++ STUB ALWAYS RETURNS TRUE!
+  if ( abs(x1-x2) < w && abs(y1-y2)<h ) {
+    result=  true;
+  } else {
+    result=false;
+  }
+
+  return result;
+}
+/*
+boolean hit2( float x1, float y1, float x2, float y2, float w, float h ) {
+  boolean result;
+
+  xx1=  x1;
+  yy1=y1;
+  xx2=x2;
+  yy2=y2;
+  ww=w;
+  hh=h;
+
+
+  // +++++ STUB ALWAYS RETURNS TRUE!
+  if ( abs(x1-x2) < w && abs(y1-y2)<h ) {
+    result=  true;
+  } else {
+    result=false;
+  }
+
+
+
+  return result;
+
+}
+*/
