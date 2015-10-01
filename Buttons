@@ -24,7 +24,7 @@ float button4X = W/2, button4Y = H/2, button4q = 50, button4p = 20;
 //Deciding the size of the screen, and other
 void setup()
 {
-  size(W,H);
+  size(600,500);
   reset();
   
   
@@ -49,12 +49,12 @@ void draw()
   //Button to randomize color
   drawButton(button4X, button4Y, button4q, button4p, 0, 0, 0 );
   
-  text( "x1: "+ xx1, 10,10 );
-  text( "y1: "+ yy1, 10,20 );
-  text( xx2, 10,30 );
-  text( yy2, 10,40 );
-  text( ww, 10,50 );
-  text( hh, 10,60 );
+//  text( "x1: "+ xx1, 10,10 );
+//  text( "y1: "+ yy1, 10,20 );
+//  text( xx2, 10,30 );
+//  text( yy2, 10,40 );
+//  text( ww, 10,50 );
+//  text( hh, 10,60 );
 }
 
 //Method to make a button to press.
@@ -107,7 +107,6 @@ void mousePressed()
   //Hitting the green button
   else if ( hit( mouseX, mouseY,  button2X, button2Y, button2q, button2p) == true)
    {
-     background(0);
       b = b - 20;
       if( b < 0)
       {
@@ -136,16 +135,16 @@ void mousePressed()
       }
    }
    //Hitting the black button
-  /*else if ( hit( mouseX, mouseY,  button4X, button4Y, button4q, button4p) == true)
+  else if ( hit( mouseX, mouseY,  button4X, button4Y, button4q, button4p) == true)
    {
      r = int( random(255) );
-     g = random(255);
-     b = random(255);
+     g = int( random(255) );
+     b = int( random(255) );
    }
-   */
+   
    else
-   //??  reset();
-   ;
+     reset();
+   
    
 }
 
